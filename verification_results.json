@@ -1,0 +1,252 @@
+{
+  "kpis": {
+    "total_sales": 118726350.25999999,
+    "total_units_sold": 1125806.0,
+    "total_profit": 16893702.259999998,
+    "total_discounts": 9205248.24,
+    "total_cogs": 101832648.0,
+    "total_gross_sales": 127931598.5,
+    "profit_margin_pct": 14.23
+  },
+  "by_country": [
+    {
+      "Country": "Canada",
+      "Sales": 24887654.885,
+      "Units Sold": 247428.5,
+      "Profit": 3529228.885,
+      "Gross Sales": 26932163.5,
+      "COGS": 21358426.0,
+      "Profit Margin %": 14.18064056781459
+    },
+    {
+      "Country": "France",
+      "Sales": 24354172.28,
+      "Units Sold": 240931.0,
+      "Profit": 3781020.78,
+      "Gross Sales": 26081674.5,
+      "COGS": 20573151.5,
+      "Profit Margin %": 15.52514590325465
+    },
+    {
+      "Country": "Germany",
+      "Sales": 23505340.82,
+      "Units Sold": 201494.0,
+      "Profit": 3680388.82,
+      "Gross Sales": 24921467.5,
+      "COGS": 19824952.0,
+      "Profit Margin %": 15.657670519154804
+    },
+    {
+      "Country": "Mexico",
+      "Sales": 20949352.11,
+      "Units Sold": 203325.0,
+      "Profit": 2907523.11,
+      "Gross Sales": 22726935.0,
+      "COGS": 18041829.0,
+      "Profit Margin %": 13.878821143170905
+    },
+    {
+      "Country": "United States of America",
+      "Sales": 25029830.165,
+      "Units Sold": 232627.5,
+      "Profit": 2995540.665,
+      "Gross Sales": 27269358.0,
+      "COGS": 22034289.5,
+      "Profit Margin %": 11.96788250360867
+    }
+  ],
+  "by_segment": [
+    {
+      "Segment": "Channel Partners",
+      "Profit": 1316803.14,
+      "Sales": 1800593.64,
+      "Units Sold": 161263.5,
+      "Discounts": 134568.36,
+      "Profit Margin %": 73.13161119462801
+    },
+    {
+      "Segment": "Enterprise",
+      "Profit": -614545.625,
+      "Sales": 19611694.375,
+      "Units Sold": 168552.0,
+      "Discounts": 1457305.625,
+      "Profit Margin %": -3.1335672137711454
+    },
+    {
+      "Segment": "Government",
+      "Profit": 11388173.17,
+      "Sales": 52504260.67,
+      "Units Sold": 470673.5,
+      "Discounts": 3898805.83,
+      "Profit Margin %": 21.6899981538203
+    },
+    {
+      "Segment": "Midmarket",
+      "Profit": 660103.075,
+      "Sales": 2381883.075,
+      "Units Sold": 172178.0,
+      "Discounts": 200786.925,
+      "Profit Margin %": 27.713496179907988
+    },
+    {
+      "Segment": "Small Business",
+      "Profit": 4143168.5,
+      "Sales": 42427918.5,
+      "Units Sold": 153139.0,
+      "Discounts": 3513781.5,
+      "Profit Margin %": 9.765193878177172
+    }
+  ],
+  "by_product": [
+    {
+      "Product": "Amarilla",
+      "Sales": 17747116.06,
+      "Profit": 2814104.06,
+      "Units Sold": 155315.0
+    },
+    {
+      "Product": "Carretera",
+      "Sales": 13815307.885,
+      "Profit": 1826804.885,
+      "Units Sold": 146846.0
+    },
+    {
+      "Product": "Montana",
+      "Sales": 15390801.88,
+      "Profit": 2114754.88,
+      "Units Sold": 154198.0
+    },
+    {
+      "Product": "Paseo",
+      "Sales": 33011143.95,
+      "Profit": 4797437.95,
+      "Units Sold": 338239.5
+    },
+    {
+      "Product": "VTT",
+      "Sales": 20511921.02,
+      "Profit": 3034608.02,
+      "Units Sold": 168783.0
+    },
+    {
+      "Product": "Velo",
+      "Sales": 18250059.465,
+      "Profit": 2305992.465,
+      "Units Sold": 162424.5
+    }
+  ],
+  "monthly_trend": [
+    {
+      "YearMonth": "2013-09",
+      "Year": 2013,
+      "Month Name": "September",
+      "Sales": 4484000.03,
+      "Profit": 763603.03
+    },
+    {
+      "YearMonth": "2013-10",
+      "Year": 2013,
+      "Month Name": "October",
+      "Sales": 9295611.1,
+      "Profit": 1657795.1
+    },
+    {
+      "YearMonth": "2013-11",
+      "Year": 2013,
+      "Month Name": "November",
+      "Sales": 7267203.3,
+      "Profit": 765502.3
+    },
+    {
+      "YearMonth": "2013-12",
+      "Year": 2013,
+      "Month Name": "December",
+      "Sales": 5368441.08,
+      "Profit": 691564.08
+    },
+    {
+      "YearMonth": "2014-01",
+      "Year": 2014,
+      "Month Name": "January",
+      "Sales": 6607761.68,
+      "Profit": 814028.6799999999
+    },
+    {
+      "YearMonth": "2014-02",
+      "Year": 2014,
+      "Month Name": "February",
+      "Sales": 7297531.39,
+      "Profit": 1148547.39
+    },
+    {
+      "YearMonth": "2014-03",
+      "Year": 2014,
+      "Month Name": "March",
+      "Sales": 5586859.87,
+      "Profit": 669866.87
+    },
+    {
+      "YearMonth": "2014-04",
+      "Year": 2014,
+      "Month Name": "April",
+      "Sales": 6964775.07,
+      "Profit": 929984.57
+    },
+    {
+      "YearMonth": "2014-05",
+      "Year": 2014,
+      "Month Name": "May",
+      "Sales": 6210211.06,
+      "Profit": 828640.0599999999
+    },
+    {
+      "YearMonth": "2014-06",
+      "Year": 2014,
+      "Month Name": "June",
+      "Sales": 9518893.82,
+      "Profit": 1473753.82
+    },
+    {
+      "YearMonth": "2014-07",
+      "Year": 2014,
+      "Month Name": "July",
+      "Sales": 8102920.18,
+      "Profit": 923865.6799999999
+    },
+    {
+      "YearMonth": "2014-08",
+      "Year": 2014,
+      "Month Name": "August",
+      "Sales": 5864622.42,
+      "Profit": 791066.4199999999
+    },
+    {
+      "YearMonth": "2014-09",
+      "Year": 2014,
+      "Month Name": "September",
+      "Sales": 6398697.24,
+      "Profit": 1023132.24
+    },
+    {
+      "YearMonth": "2014-10",
+      "Year": 2014,
+      "Month Name": "October",
+      "Sales": 12375819.92,
+      "Profit": 1781985.92
+    },
+    {
+      "YearMonth": "2014-11",
+      "Year": 2014,
+      "Month Name": "November",
+      "Sales": 5384214.2,
+      "Profit": 604600.2
+    },
+    {
+      "YearMonth": "2014-12",
+      "Year": 2014,
+      "Month Name": "December",
+      "Sales": 11998787.9,
+      "Profit": 2025765.9
+    }
+  ]
+}

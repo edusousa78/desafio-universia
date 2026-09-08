@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power BI Analyst Dashboard - Desafio DIO & Universia</title>
+    <meta name="description" content="Dashboard financeiro interativo réplica do Desafio Power BI Analyst - DIO & Universia com 3 páginas detalhadas, mapas interativos, visuais de lucro por segmento e KPIs.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <header class="app-header">
+        <div class="brand-section">
+            <div class="brand-logo-container">
+                <i class="fa-solid fa-chart-column brand-icon"></i>
+            </div>
+            <div class="brand-text">
+                <h1 class="app-title">Power BI Analyst <span>Financial Dashboard</span></h1>
+                <p class="app-subtitle">Desafio Prático DIO & Universia • Dataset Financial Sample</p>
+            </div>
+        </div>
+
+        <div class="header-actions">
+            <!-- Theme Toggle -->
+            <button id="theme-toggle-btn" class="theme-btn" title="Alternar Tema Claro/Escuro" aria-label="Alternar Tema">
+                <i class="fa-solid fa-moon moon-icon"></i>
+                <i class="fa-solid fa-sun sun-icon"></i>
+                <span class="btn-text">Tema</span>
+            </button>
+
+            <!-- Refresh Data Button -->
+            <button id="refresh-btn" class="action-btn" title="Recarregar Dados" aria-label="Recarregar">
+                <i class="fa-solid fa-rotate-right"></i>
+                <span>Atualizar</span>
+            </button>
+
+            <!-- Export Badge -->
+            <div class="badge-dio">
+                <i class="fa-solid fa-award"></i>
+                <span>DIO Challenge</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Workspace Container -->
+    <div class="app-container">
+        <!-- Sidebar Navigation (Power BI Page Tabs) -->
+        <aside class="app-sidebar">
+            <div class="sidebar-header">
+                <i class="fa-solid fa-layer-group"></i>
+                <span>Páginas do Relatório</span>
+            </div>
+
+            <nav class="page-tabs" role="tablist">
+                <button class="nav-tab active" data-page="page1" role="tab" id="tab-page1" aria-controls="page1-content">
+                    <div class="tab-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <div class="tab-info">
+                        <span class="tab-title">Página 1</span>
+                        <span class="tab-desc">Visão Geral de Vendas</span>
+                    </div>
+                </button>
+
+                <button class="nav-tab" data-page="page2" role="tab" id="tab-page2" aria-controls="page2-content">
+                    <div class="tab-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
+                    <div class="tab-info">
+                        <span class="tab-title">Página 2</span>
+                        <span class="tab-desc">Análise de Produtos & Lucro</span>
+                    </div>
+                </button>
+
+                <button class="nav-tab challenge-tab" data-page="page3" role="tab" id="tab-page3" aria-controls="page3-content">
+                    <div class="tab-badge">Desafio</div>
+                    <div class="tab-icon"><i class="fa-solid fa-earth-americas"></i></div>
+                    <div class="tab-info">
+                        <span class="tab-title">Página 3</span>
+                        <span class="tab-desc">Mapas & Lucro por Segmento</span>
+                    </div>
+                </button>
+            </nav>
+
+            <!-- Slicers / Interactive Filters -->
+            <div class="sidebar-filters">
+                <div class="filter-header">
+                    <i class="fa-solid fa-filter"></i>
+                    <span>Filtros do Relatório</span>
+                    <button id="clear-filters-btn" class="reset-filter-btn" title="Limpar Filtros"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="filter-group">
+                    <label for="country-select"><i class="fa-solid fa-globe"></i> País</label>
+                    <select id="country-select" class="custom-select">
+                        <option value="ALL">Todos os Países (5)</option>
+                        <option value="Canada">Canadá</option>
+                        <option value="France">França</option>
+                        <option value="Germany">Alemanha</option>
+                        <option value="Mexico">México</option>
+                        <option value="United States of America">Estados Unidos</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="segment-select"><i class="fa-solid fa-chart-pie"></i> Segmento</label>
+                    <select id="segment-select" class="custom-select">
+                        <option value="ALL">Todos os Segmentos (5)</option>
+                        <option value="Government">Government</option>
+                        <option value="Small Business">Small Business</option>
+                        <option value="Channel Partners">Channel Partners</option>
+                        <option value="Midmarket">Midmarket</option>
+                        <option value="Enterprise">Enterprise</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Report Status Card -->
+            <div class="sidebar-footer">
+                <div class="status-indicator">
+                    <span class="dot pulse"></span>
+                    <span>Dados Carregados (700 Registros)</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Canvas -->
+        <main class="app-main">
+            <!-- Global Top Summary Banner / KPI Cards -->
+            <section class="kpi-banner">
+                <div class="kpi-card" id="kpi-sales">
+                    <div class="kpi-icon sales-bg"><i class="fa-solid fa-dollar-sign"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Vendas Totais (Sales)</span>
+                        <span class="kpi-value" id="val-sales">$118,726,350.26</span>
+                        <span class="kpi-trend positive"><i class="fa-solid fa-arrow-trend-up"></i> Receita Bruta: $127.93M</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card" id="kpi-units">
+                    <div class="kpi-icon units-bg"><i class="fa-solid fa-cubes"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Unidades Vendidas (Units Sold)</span>
+                        <span class="kpi-value" id="val-units">1,125,806</span>
+                        <span class="kpi-trend neutral"><i class="fa-solid fa-bag-shopping"></i> 700 Transações</span>
+                    </div>
+                </div>
+
+                <div class="kpi-card" id="kpi-profit">
+                    <div class="kpi-icon profit-bg"><i class="fa-solid fa-piggy-bank"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Lucro Líquido (Profit)</span>
+                        <span class="kpi-value" id="val-profit">$16,893,702.26</span>
+                        <span class="kpi-trend positive"><i class="fa-solid fa-chart-line"></i> Margem: <strong id="val-margin">14.23%</strong></span>
+                    </div>
+                </div>
+
+                <div class="kpi-card" id="kpi-discounts">
+                    <div class="kpi-icon discounts-bg"><i class="fa-solid fa-percent"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-label">Total em Descontos</span>
+                        <span class="kpi-value" id="val-discounts">$9,205,248.24</span>
+                        <span class="kpi-trend warning"><i class="fa-solid fa-tag"></i> Impacto Mkt: 7.75%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- PAGE 1: Sales Overview -->
+            <div id="page1-content" class="page-content active">
+                <div class="page-title-bar">
+                    <h2><i class="fa-solid fa-chart-line"></i> Página 1: Visão Geral de Vendas</h2>
+                    <p>Replicado das Aulas • Análise Temporal de Vendas, Lucratividade e Desempenho por Segmento</p>
+                </div>
+
+                <div class="visuals-grid grid-2cols">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <h3><i class="fa-solid fa-chart-area"></i> Evolução Mensal: Vendas vs. Lucro Líquido</h3>
+                            <div class="visual-actions">
+                                <button class="v-btn" title="Expandir"><i class="fa-solid fa-expand"></i></button>
+                            </div>
+                        </div>
+                        <div class="visual-body">
+                            <div id="monthly-chart-container" class="chart-box"></div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <h3><i class="fa-solid fa-chart-bar"></i> Volume de Vendas por Segmento de Mercado</h3>
+                            <div class="visual-actions">
+                                <button class="v-btn" title="Expandir"><i class="fa-solid fa-expand"></i></button>
+                            </div>
+                        </div>
+                        <div class="visual-body">
+                            <div id="segment-sales-chart-container" class="chart-box"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 2: Product & Profitability Analysis -->
+            <div id="page2-content" class="page-content">
+                <div class="page-title-bar">
+                    <h2><i class="fa-solid fa-boxes-stacked"></i> Página 2: Análise de Produtos e Lucratividade</h2>
+                    <p>Replicado das Aulas • Distribuição de Margens, Faixas de Desconto e Performance por Produto</p>
+                </div>
+
+                <div class="visuals-grid grid-2cols">
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <h3><i class="fa-solid fa-chart-column"></i> Lucro por Produto e Faixa de Desconto</h3>
+                            <div class="visual-actions">
+                                <button class="v-btn" title="Expandir"><i class="fa-solid fa-expand"></i></button>
+                            </div>
+                        </div>
+                        <div class="visual-body">
+                            <div id="product-profit-chart-container" class="chart-box"></div>
+                        </div>
+                    </div>
+
+                    <div class="visual-card">
+                        <div class="visual-header">
+                            <h3><i class="fa-solid fa-table"></i> Matriz de Performance de Produtos</h3>
+                            <div class="visual-actions">
+                                <button class="v-btn" title="Exportar"><i class="fa-solid fa-download"></i></button>
+                            </div>
+                        </div>
+                        <div class="visual-body overflow-table">
+                            <table class="data-table" id="product-matrix-table">
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Unid. Vendidas</th>
+                                        <th>Vendas ($)</th>
+                                        <th>Lucro ($)</th>
+                                        <th>Margem %</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dynamic Rows -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 3: Map Visuals & Profit by Segment (DIO Exclusive Challenge) -->
+            <div id="page3-content" class="page-content">
+                <div class="page-title-bar challenge-header">
+                    <div class="challenge-title-box">
+                        <span class="badge-tag">Desafio Exclusivo DIO</span>
+                        <h2><i class="fa-solid fa-earth-americas"></i> Página 3: Análise Geográfica & Lucro por Segmento</h2>
+                    </div>
+                    <p>Página criada autonomamente • Contém os 2 Visuais de Mapa e o Visual de Rosca/Pizza com Tooltips Customizados</p>
+                </div>
+
+                <div class="visuals-grid grid-page3">
+                    <!-- Visual Mapa 1: Soma de Sales e Unidades Vendidas por País -->
+                    <div class="visual-card map-visual-card">
+                        <div class="visual-header">
+                            <div class="visual-title-box">
+                                <span class="v-badge blue-badge">Visual Mapa 1</span>
+                                <h3>Distribuição Global: Vendas e Unidades por País</h3>
+                            </div>
+                            <span class="visual-subtitle-tag">Vendas ($) & Unidades Vendidas (Tooltip)</span>
+                        </div>
+                        <div class="visual-body">
+                            <div id="map-sales-units-container" class="map-box">
+                                <!-- Interactive SVG World Map representation -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Mapa 2: Soma de Lucro (Profit) por País -->
+                    <div class="visual-card map-visual-card">
+                        <div class="visual-header">
+                            <div class="visual-title-box">
+                                <span class="v-badge green-badge">Visual Mapa 2</span>
+                                <h3>Lucratividade Global: Lucro Total por País</h3>
+                            </div>
+                            <span class="visual-subtitle-tag">Lucro ($) & Margem de Lucro % (Tooltip)</span>
+                        </div>
+                        <div class="visual-body">
+                            <div id="map-profit-container" class="map-box">
+                                <!-- Interactive SVG World Map representation -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Visual Pizza/Rosca: Lucro por Segmento -->
+                    <div class="visual-card pie-visual-card">
+                        <div class="visual-header">
+                            <div class="visual-title-box">
+                                <span class="v-badge purple-badge">Visual Pizza / Rosca</span>
+                                <h3>Participação do Lucro por Segmento de Mercado</h3>
+                            </div>
+                            <span class="visual-subtitle-tag">Lucro Líquido ($) & Porcentagem do Total</span>
+                        </div>
+                        <div class="visual-body flex-row">
+                            <div id="segment-profit-donut-container" class="chart-box donut-chart-box"></div>
+                            <div class="donut-legend-box" id="donut-legend"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Custom Interactive Tooltip Element -->
+    <div id="custom-tooltip" class="custom-tooltip hidden"></div>
+
+    <!-- App JavaScript Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

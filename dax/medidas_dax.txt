@@ -1,0 +1,52 @@
+/* =========================================================================
+   MEDIDAS DAX - PROJETO POWER BI ANALYST (DIO / UNIVERSIA)
+   Dataset: Financial Sample
+   ========================================================================= */
+
+// 1. Total de Vendas (Total Sales)
+Total Vendas = SUM('financials'[Sales])
+
+// 2. Total de Unidades Vendidas (Total Units Sold)
+Total Unidades Vendidas = SUM('financials'[Units Sold])
+
+// 3. Total de Lucro (Total Profit)
+Total Lucro = SUM('financials'[Profit])
+
+// 4. Total de Descontos (Total Discounts)
+Total Descontos = SUM('financials'[Discounts])
+
+// 5. Total Vendas Brutas (Gross Sales)
+Total Vendas Brutas = SUM('financials'[Gross Sales])
+
+// 6. Custo de Produtos Vendidos (COGS)
+Total COGS = SUM('financials'[COGS])
+
+// 7. Margem de Lucro Percentual (Profit Margin %)
+Margem de Lucro % = 
+DIVIDE(
+    [Total Lucro], 
+    [Total Vendas], 
+    0
+)
+
+// 8. Preço Médio de Venda (Average Sales Price)
+Preço Médio Venda = AVERAGE('financials'[Sale Price])
+
+// 9. Preço Médio de Fabricação (Average Manufacturing Price)
+Preço Médio Fabricação = AVERAGE('financials'[Manufacturing Price])
+
+// 10. Desconto Médio Por Unidade (Average Discount per Unit)
+Desconto Médio Unidade = 
+DIVIDE(
+    [Total Descontos], 
+    [Total Unidades Vendidas], 
+    0
+)
+
+// 11. Participação do Lucro do Segmento (Segment Profit Share %)
+% Participação Lucro Segmento = 
+DIVIDE(
+    [Total Lucro], 
+    CALCULATE([Total Lucro], ALL('financials'[Segment])), 
+    0
+)
