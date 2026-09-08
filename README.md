@@ -93,11 +93,11 @@ Tabelas consolidadas via script Python ([`scripts/analyze_data.py`](file:///f:/D
 ### Participação de Lucro por Segmento (Visual Pizza/Rosca)
 | Segmento de Mercado | Lucro Líquido ($) | Participação no Lucro (%) | Participação no Volume de Vendas |
 | :--- | :---: | :---: | :---: |
-| 🏛️ **Government** | `$11,388,173.17` | **`67.41%`** *(Líder de Mercado)* | `44.22%` |
-| 🏬 **Small Business** | `$4,143,168.50` | **`24.52%`** | `35.73%` |
-| 🤝 **Channel Partners** | `$1,316,803.14` | **`7.79%`** | `1.52%` |
-| 🏢 **Midmarket** | `$660,103.07` | **`3.91%`** | `2.01%` |
-| 🏭 **Enterprise** | `-$614,545.62` | **`-3.64%`** *(Operação com Prejuízo)* | `16.52%` |
+| 🏛️ **Governo** *(Government)* | `$11,388,173.17` | **`67.41%`** *(Líder de Mercado)* | `44.22%` |
+| 🏬 **Pequenas Empresas** *(Small Business)* | `$4,143,168.50` | **`24.52%`** | `35.73%` |
+| 🤝 **Parceiros de Canal** *(Channel Partners)* | `$1,316,803.14` | **`7.79%`** | `1.52%` |
+| 🏢 **Médias Empresas** *(Midmarket)* | `$660,103.07` | **`3.91%`** | `2.01%` |
+| 🏭 **Corporativo** *(Enterprise)* | `-$614,545.62` | **`-3.64%`** *(Operação com Prejuízo)* | `16.52%` |
 
 ---
 

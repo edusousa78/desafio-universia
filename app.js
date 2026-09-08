@@ -1,25 +1,9 @@
 /* =========================================================================
    POWER BI ANALYST DASHBOARD JAVASCRIPT ENGINE (DIO & UNIVERSIA)
-   Calculates exact financial metrics and renders interactive SVG charts & maps.
+   Calculates exact financial metrics and renders interactive SVG charts & maps in 100% PT-BR.
    ========================================================================= */
 
-// Dataset store with exact Financial Sample metrics
-const RAW_DATA = [
-    { country: "Canada", segment: "Government", product: "Carretera", discount_band: "None", units: 1618.5, sales: 52381.30, profit: 16185.00, gross: 52381.30, cogs: 36196.30 },
-    { country: "Germany", segment: "Government", product: "Carretera", discount_band: "None", units: 1321.0, sales: 26420.00, profit: 6605.00, gross: 26420.00, cogs: 19815.00 },
-    { country: "France", segment: "Midmarket", product: "Carretera", discount_band: "None", units: 2178.0, sales: 32670.00, profit: 10890.00, gross: 32670.00, cogs: 21780.00 },
-    { country: "Germany", segment: "Midmarket", product: "Carretera", discount_band: "None", units: 888.0, sales: 13320.00, profit: 4440.00, gross: 13320.00, cogs: 8880.00 },
-    { country: "Mexico", segment: "Midmarket", product: "Carretera", discount_band: "None", units: 2470.0, sales: 37050.00, profit: 12350.00, gross: 37050.00, cogs: 24700.00 },
-    { country: "Germany", segment: "Government", product: "Carretera", discount_band: "Low", units: 1513.0, sales: 453900.00, profit: 211820.00, gross: 453900.00, cogs: 242080.00 },
-    { country: "Germany", segment: "Midmarket", product: "Montana", discount_band: "Low", units: 921.0, sales: 13815.00, profit: 4605.00, gross: 13815.00, cogs: 9210.00 },
-    { country: "Canada", segment: "Channel Partners", product: "Montana", discount_band: "Low", units: 2518.0, sales: 30216.00, profit: 22662.00, gross: 30216.00, cogs: 7554.00 },
-    { country: "France", segment: "Government", product: "Montana", discount_band: "Low", units: 1899.0, sales: 37980.00, profit: 9495.00, gross: 37980.00, cogs: 28485.00 },
-    { country: "United States of America", segment: "Channel Partners", product: "Montana", discount_band: "Low", units: 1545.0, sales: 18540.00, profit: 13905.00, gross: 18540.00, cogs: 4635.00 },
-    { country: "Mexico", segment: "Government", product: "Montana", discount_band: "Medium", units: 2151.0, sales: 752850.00, profit: 408690.00, gross: 752850.00, cogs: 344160.00 },
-    { country: "Canada", segment: "Government", product: "Paseo", discount_band: "Medium", units: 2750.0, sales: 962500.00, profit: 522500.00, gross: 962500.00, cogs: 440000.00 }
-];
-
-// Pre-calculated exact aggregates from Financial Sample dataset
+// Dataset store with exact Financial Sample metrics (Portuguese Labels)
 const METRICS_DATA = {
     overall: {
         sales: 118726350.26,
@@ -29,18 +13,18 @@ const METRICS_DATA = {
         margin: 14.23
     },
     byCountry: [
-        { country: "United States of America", flag: "🇺🇸", sales: 25029830.16, units: 232627.50, profit: 2995540.67, gross: 27072550.00, lat: 37.0902, lng: -95.7129, cogs: 22034289.49 },
-        { country: "Canada", flag: "🇨🇦", sales: 24887654.89, units: 247428.50, profit: 3529228.88, gross: 26909450.00, lat: 56.1304, lng: -106.3468, cogs: 21358426.01 },
-        { country: "France", flag: "🇫🇷", sales: 24354172.28, units: 240931.00, profit: 3781020.78, gross: 26116800.00, lat: 46.2276, lng: 2.2137, cogs: 20573151.50 },
-        { country: "Germany", flag: "🇩🇪", sales: 23505340.82, units: 201494.00, profit: 3680388.82, gross: 25293600.00, lat: 51.1657, lng: 10.4515, cogs: 19824952.00 },
-        { country: "Mexico", flag: "🇲🇽", sales: 20949352.11, units: 203325.00, profit: 2907523.11, gross: 22533800.00, lat: 23.6345, lng: -102.5528, cogs: 18041829.00 }
+        { country: "Estados Unidos", flag: "🇺🇸", sales: 25029830.16, units: 232627.50, profit: 2995540.67, gross: 27072550.00, cogs: 22034289.49 },
+        { country: "Canadá", flag: "🇨🇦", sales: 24887654.89, units: 247428.50, profit: 3529228.88, gross: 26909450.00, cogs: 21358426.01 },
+        { country: "França", flag: "🇫🇷", sales: 24354172.28, units: 240931.00, profit: 3781020.78, gross: 26116800.00, cogs: 20573151.50 },
+        { country: "Alemanha", flag: "🇩🇪", sales: 23505340.82, units: 201494.00, profit: 3680388.82, gross: 25293600.00, cogs: 19824952.00 },
+        { country: "México", flag: "🇲🇽", sales: 20949352.11, units: 203325.00, profit: 2907523.11, gross: 22533800.00, cogs: 18041829.00 }
     ],
     bySegment: [
-        { segment: "Government", profit: 11388173.17, sales: 52504260.69, units: 470877.50, share: 67.41, color: "#3b82f6" },
-        { segment: "Small Business", profit: 4143168.50, sales: 42427918.50, units: 184861.00, share: 24.52, color: "#10b981" },
-        { segment: "Channel Partners", profit: 1316803.14, sales: 1800593.70, units: 161264.50, share: 7.79, color: "#8b5cf6" },
-        { segment: "Midmarket", profit: 660103.07, sales: 2381883.00, units: 172178.00, share: 3.91, color: "#f59e0b" },
-        { segment: "Enterprise", profit: -614545.62, sales: 19611694.38, units: 136625.00, share: -3.64, color: "#ef4444" }
+        { segment: "Governo", profit: 11388173.17, sales: 52504260.69, units: 470877.50, share: 67.41, color: "#3b82f6" },
+        { segment: "Pequenas Empresas", profit: 4143168.50, sales: 42427918.50, units: 184861.00, share: 24.52, color: "#10b981" },
+        { segment: "Parceiros de Canal", profit: 1316803.14, sales: 1800593.70, units: 161264.50, share: 7.79, color: "#8b5cf6" },
+        { segment: "Médias Empresas", profit: 660103.07, sales: 2381883.00, units: 172178.00, share: 3.91, color: "#f59e0b" },
+        { segment: "Corporativo", profit: -614545.62, sales: 19611694.38, units: 136625.00, share: -3.64, color: "#ef4444" }
     ],
     byProduct: [
         { product: "Paseo", sales: 33011620.00, profit: 4797437.95, units: 338239.50, margin: 14.53 },
@@ -71,13 +55,13 @@ let activePage = "page1";
 let activeCountryFilter = "ALL";
 let activeSegmentFilter = "ALL";
 
-// Helper Formatter Functions
+// Helper Formatter Functions (PT-BR)
 function formatCurrency(val) {
-    return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 2 }).format(val);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 2 }).format(val).replace('BRL', 'R$');
 }
 
 function formatNumber(val) {
-    return new Intl.NumberFormat('en-US', { maximumFractionDigits: 2 }).format(val);
+    return new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(val);
 }
 
 // DOM Loaded Initialization
@@ -95,7 +79,7 @@ function initTheme() {
         const currentTheme = document.documentElement.getAttribute("data-theme");
         const nextTheme = currentTheme === "dark" ? "light" : "dark";
         document.documentElement.setAttribute("data-theme", nextTheme);
-        renderAllVisuals(); // re-render charts for appropriate colors
+        renderAllVisuals();
     });
 }
 
@@ -158,9 +142,7 @@ function renderAllVisuals() {
     renderPage3DonutSegmentProfit();
 }
 
-// -------------------------------------------------------------------------
 // KPI BANNER RENDERING
-// -------------------------------------------------------------------------
 function renderKPIs() {
     let sales = METRICS_DATA.overall.sales;
     let units = METRICS_DATA.overall.units;
@@ -195,11 +177,8 @@ function renderKPIs() {
     document.getElementById("val-discounts").innerText = formatCurrency(discounts);
 }
 
-// -------------------------------------------------------------------------
 // PAGE 1 VISUALS
-// -------------------------------------------------------------------------
 function renderPage1Charts() {
-    // Monthly Evolution SVG Chart
     const monthlyContainer = document.getElementById("monthly-chart-container");
     const data = METRICS_DATA.monthlyTrend;
     const maxSales = Math.max(...data.map(d => d.sales));
@@ -237,7 +216,6 @@ function renderPage1Charts() {
         `;
     });
 
-    // Draw profit trend line
     svgHtml += `
         <polyline points="${linePoints.join(' ')}" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round"/>
     `;
@@ -255,27 +233,24 @@ function renderPage1Charts() {
     const segData = METRICS_DATA.bySegment.sort((a,b) => b.sales - a.sales);
     const maxSegSales = Math.max(...segData.map(s => s.sales));
 
-    let segSvg = `<svg width="100%" height="260" viewBox="0 0 550 260">`;
+    let segSvg = `<svg width="100%" height="260" viewBox="0 0 580 260">`;
     segData.forEach((s, i) => {
         const y = 30 + i * 44;
         const w = (s.sales / maxSegSales) * 320;
         segSvg += `
             <text x="10" y="${y + 16}" font-size="12" font-weight="600" fill="var(--text-primary)">${s.segment}</text>
-            <rect x="140" y="${y}" width="${w}" height="24" rx="6" fill="${s.color}" opacity="0.85">
+            <rect x="160" y="${y}" width="${w}" height="24" rx="6" fill="${s.color}" opacity="0.85">
                 <title>${s.segment}: ${formatCurrency(s.sales)}</title>
             </rect>
-            <text x="${150 + w}" y="${y + 16}" font-size="11" font-weight="700" fill="var(--text-secondary)">${formatCurrency(s.sales)}</text>
+            <text x="${170 + w}" y="${y + 16}" font-size="11" font-weight="700" fill="var(--text-secondary)">${formatCurrency(s.sales)}</text>
         `;
     });
     segSvg += `</svg>`;
     segmentSalesContainer.innerHTML = segSvg;
 }
 
-// -------------------------------------------------------------------------
 // PAGE 2 VISUALS
-// -------------------------------------------------------------------------
 function renderPage2Visuals() {
-    // Product Profit Grouped Chart
     const container = document.getElementById("product-profit-chart-container");
     const prods = METRICS_DATA.byProduct;
     const maxProfit = Math.max(...prods.map(p => p.profit));
@@ -300,7 +275,6 @@ function renderPage2Visuals() {
     svg += `</svg>`;
     container.innerHTML = svg;
 
-    // Product Matrix Table
     const tbody = document.querySelector("#product-matrix-table tbody");
     tbody.innerHTML = "";
     prods.forEach(p => {
@@ -317,44 +291,35 @@ function renderPage2Visuals() {
     });
 }
 
-// -------------------------------------------------------------------------
-// PAGE 3 VISUALS (DIO EXCLUSIVE CHALLENGE REQUIREMENTS)
-// 1. Visual Mapa 1: Sales & Units Sold by Country
-// 2. Visual Mapa 2: Profit by Country
-// 3. Visual Pizza/Rosca: Profit by Segment
-// -------------------------------------------------------------------------
-
-// Helper to draw World Map SVG Path outlines
+// PAGE 3 VISUALS (100% PT-BR REQUIRMENTS)
 function getWorldMapPathsSVG() {
     return `
-        <!-- Simplified World Map Polygons for Visualization -->
         <rect width="100%" height="100%" fill="var(--map-bg)"/>
-        <!-- North America -->
+        <!-- América do Norte -->
         <path d="M 50 40 Q 120 20 220 50 Q 200 120 120 140 Q 60 100 50 40 Z" fill="var(--map-land)" stroke="var(--map-stroke)" stroke-width="1"/>
-        <!-- South America -->
+        <!-- América do Sul -->
         <path d="M 140 150 Q 200 160 180 230 Q 140 250 130 180 Z" fill="var(--map-land)" stroke="var(--map-stroke)" stroke-width="1"/>
-        <!-- Europe -->
+        <!-- Europa -->
         <path d="M 280 40 Q 360 30 380 90 Q 310 110 270 70 Z" fill="var(--map-land)" stroke="var(--map-stroke)" stroke-width="1"/>
-        <!-- Africa -->
+        <!-- África -->
         <path d="M 280 110 Q 370 110 350 210 Q 290 220 270 150 Z" fill="var(--map-land)" stroke="var(--map-stroke)" stroke-width="1"/>
-        <!-- Asia -->
+        <!-- Ásia -->
         <path d="M 380 30 Q 520 20 540 120 Q 420 140 370 80 Z" fill="var(--map-land)" stroke="var(--map-stroke)" stroke-width="1"/>
     `;
 }
 
-// Visual Mapa 1: Soma de Sales e Unidades Vendidas por País
+// Visual Mapa 1: Soma de Vendas e Unidades Vendidas por País
 function renderPage3MapSalesUnits() {
     const container = document.getElementById("map-sales-units-container");
     const countries = METRICS_DATA.byCountry;
     const maxSales = Math.max(...countries.map(c => c.sales));
 
-    // Coordinates mapping for SVG viewbox 0 0 600 280
     const coords = {
-        "Canada": { x: 140, y: 65 },
-        "United States of America": { x: 125, y: 105 },
-        "Mexico": { x: 110, y: 135 },
-        "France": { x: 310, y: 75 },
-        "Germany": { x: 335, y: 65 }
+        "Canadá": { x: 140, y: 65 },
+        "Estados Unidos": { x: 125, y: 105 },
+        "México": { x: 110, y: 135 },
+        "França": { x: 310, y: 75 },
+        "Alemanha": { x: 335, y: 65 }
     };
 
     let svg = `<svg class="map-svg-container" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid slice">`;
@@ -394,11 +359,11 @@ function renderPage3MapProfit() {
     const maxProfit = Math.max(...countries.map(c => c.profit));
 
     const coords = {
-        "Canada": { x: 140, y: 65 },
-        "United States of America": { x: 125, y: 105 },
-        "Mexico": { x: 110, y: 135 },
-        "France": { x: 310, y: 75 },
-        "Germany": { x: 335, y: 65 }
+        "Canadá": { x: 140, y: 65 },
+        "Estados Unidos": { x: 125, y: 105 },
+        "México": { x: 110, y: 135 },
+        "França": { x: 310, y: 75 },
+        "Alemanha": { x: 335, y: 65 }
     };
 
     let svg = `<svg class="map-svg-container" viewBox="0 0 600 280" preserveAspectRatio="xMidYMid slice">`;
@@ -431,7 +396,7 @@ function renderPage3MapProfit() {
     attachMapTooltips(container, "profit");
 }
 
-// Map Tooltip Event Handling
+// Map Tooltip Event Handling (PT-BR)
 function attachMapTooltips(container, type) {
     const tooltip = document.getElementById("custom-tooltip");
     const bubbles = container.querySelectorAll(".map-country-bubble");
@@ -472,13 +437,12 @@ function attachMapTooltips(container, type) {
     });
 }
 
-// Visual Pizza / Rosca: Lucro por Segmento
+// Visual Pizza / Rosca: Lucro por Segmento (100% PT-BR)
 function renderPage3DonutSegmentProfit() {
     const container = document.getElementById("segment-profit-donut-container");
     const legendContainer = document.getElementById("donut-legend");
     const segs = METRICS_DATA.bySegment;
 
-    // Filter positive profit segments for donut geometry calculation
     const positiveSegs = segs.filter(s => s.profit > 0);
     const totalPositiveProfit = positiveSegs.reduce((acc, s) => acc + s.profit, 0);
 
@@ -529,13 +493,12 @@ function renderPage3DonutSegmentProfit() {
             </g>
             <circle cx="130" cy="130" r="50" fill="var(--bg-card)"/>
             <text x="130" y="124" font-size="11" font-weight="600" fill="var(--text-muted)" text-anchor="middle">Lucro Total</text>
-            <text x="130" y="142" font-size="13" font-weight="800" fill="var(--accent-green)" text-anchor="middle" font-family="'JetBrains Mono', monospace">$16.89M</text>
+            <text x="130" y="142" font-size="13" font-weight="800" fill="var(--accent-green)" text-anchor="middle" font-family="'JetBrains Mono', monospace">R$ 16,89M</text>
         </svg>
     `;
 
     container.innerHTML = svg;
 
-    // Render Legend Items
     legendContainer.innerHTML = "";
     segs.forEach(s => {
         const item = document.createElement("div");

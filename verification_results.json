@@ -10,25 +10,7 @@
   },
   "by_country": [
     {
-      "Country": "Canada",
-      "Sales": 24887654.885,
-      "Units Sold": 247428.5,
-      "Profit": 3529228.885,
-      "Gross Sales": 26932163.5,
-      "COGS": 21358426.0,
-      "Profit Margin %": 14.18064056781459
-    },
-    {
-      "Country": "France",
-      "Sales": 24354172.28,
-      "Units Sold": 240931.0,
-      "Profit": 3781020.78,
-      "Gross Sales": 26081674.5,
-      "COGS": 20573151.5,
-      "Profit Margin %": 15.52514590325465
-    },
-    {
-      "Country": "Germany",
+      "Country": "Alemanha",
       "Sales": 23505340.82,
       "Units Sold": 201494.0,
       "Profit": 3680388.82,
@@ -37,35 +19,45 @@
       "Profit Margin %": 15.657670519154804
     },
     {
-      "Country": "Mexico",
-      "Sales": 20949352.11,
-      "Units Sold": 203325.0,
-      "Profit": 2907523.11,
-      "Gross Sales": 22726935.0,
-      "COGS": 18041829.0,
-      "Profit Margin %": 13.878821143170905
+      "Country": "Canadá",
+      "Sales": 24887654.885,
+      "Units Sold": 247428.5,
+      "Profit": 3529228.885,
+      "Gross Sales": 26932163.5,
+      "COGS": 21358426.0,
+      "Profit Margin %": 14.18064056781459
     },
     {
-      "Country": "United States of America",
+      "Country": "Estados Unidos",
       "Sales": 25029830.165,
       "Units Sold": 232627.5,
       "Profit": 2995540.665,
       "Gross Sales": 27269358.0,
       "COGS": 22034289.5,
       "Profit Margin %": 11.96788250360867
+    },
+    {
+      "Country": "França",
+      "Sales": 24354172.28,
+      "Units Sold": 240931.0,
+      "Profit": 3781020.78,
+      "Gross Sales": 26081674.5,
+      "COGS": 20573151.5,
+      "Profit Margin %": 15.52514590325465
+    },
+    {
+      "Country": "México",
+      "Sales": 20949352.11,
+      "Units Sold": 203325.0,
+      "Profit": 2907523.11,
+      "Gross Sales": 22726935.0,
+      "COGS": 18041829.0,
+      "Profit Margin %": 13.878821143170905
     }
   ],
   "by_segment": [
     {
-      "Segment": "Channel Partners",
-      "Profit": 1316803.14,
-      "Sales": 1800593.64,
-      "Units Sold": 161263.5,
-      "Discounts": 134568.36,
-      "Profit Margin %": 73.13161119462801
-    },
-    {
-      "Segment": "Enterprise",
+      "Segment": "Corporativo",
       "Profit": -614545.625,
       "Sales": 19611694.375,
       "Units Sold": 168552.0,
@@ -73,7 +65,7 @@
       "Profit Margin %": -3.1335672137711454
     },
     {
-      "Segment": "Government",
+      "Segment": "Governo",
       "Profit": 11388173.17,
       "Sales": 52504260.67,
       "Units Sold": 470673.5,
@@ -81,7 +73,7 @@
       "Profit Margin %": 21.6899981538203
     },
     {
-      "Segment": "Midmarket",
+      "Segment": "Médias Empresas",
       "Profit": 660103.075,
       "Sales": 2381883.075,
       "Units Sold": 172178.0,
@@ -89,7 +81,15 @@
       "Profit Margin %": 27.713496179907988
     },
     {
-      "Segment": "Small Business",
+      "Segment": "Parceiros de Canal",
+      "Profit": 1316803.14,
+      "Sales": 1800593.64,
+      "Units Sold": 161263.5,
+      "Discounts": 134568.36,
+      "Profit Margin %": 73.13161119462801
+    },
+    {
+      "Segment": "Pequenas Empresas",
       "Profit": 4143168.5,
       "Sales": 42427918.5,
       "Units Sold": 153139.0,

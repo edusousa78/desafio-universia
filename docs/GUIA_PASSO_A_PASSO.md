@@ -23,6 +23,18 @@ Este documento fornece o passo a passo completo para recriar as 3 páginas do re
      - `Units Sold`, `Manufacturing Price`, `Sale Price`, `Gross Sales`, `Discounts`, `Sales`, `COGS`, `Profit` -> **Número Decimal**.
      - `Date` -> **Data**.
    - Remova espaços em branco das colunas se necessário.
+
+6. **Tradução das Categorias no Power Query (Recomendado)**:
+   - Clique com o botão direito na coluna **`Segment`** -> **Substituir Valores**:
+     - `Government` ➡️ `Governo`
+     - `Small Business` ➡️ `Pequenas Empresas`
+     - `Channel Partners` ➡️ `Parceiros de Canal`
+     - `Midmarket` ➡️ `Médias Empresas`
+     - `Enterprise` ➡️ `Corporativo`
+   - Clique com o botão direito na coluna **`Discount Band`** -> **Substituir Valores**:
+     - `None` ➡️ `Nenhum` | `Low` ➡️ `Baixo` | `Medium` ➡️ `Médio` | `High` ➡️ `Alto`
+   - Clique com o botão direito na coluna **`Country`** -> **Substituir Valores**:
+     - `United States of America` ➡️ `Estados Unidos`
    - Clique em **Fechar e Aplicar (Close & Apply)**.
 
 ---
