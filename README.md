@@ -160,7 +160,7 @@ desafio-universia/
 ### 1. No Power BI Desktop
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/seu-usuario/desafio-universia.git
+   git clone https://github.com/edusousa78/desafio-power-bi-analyst.git
    ```
 2. Abra o **Power BI Desktop**.
 3. Siga o tutorial completo passo a passo disponível em [`docs/GUIA_PASSO_A_PASSO.md`](file:///f:/Desktop/ESTUDOS-DIVERSOS/desafio-universia/docs/GUIA_PASSO_A_PASSO.md).
